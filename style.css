@@ -25,31 +25,29 @@ body{
     align-items: center;
     justify-content: center;
 }
+
 .retangulo{
-    width:600px;
-    height: 250px;
-    background-color: gray;
-    border-radius: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
-    border-top: 4px solid var(--black);
-    border-bottom: 4px solid var(--black);
-    overflow: visible;
+
 
 }
+
 .externo{
     background-color: var(--grey);
     height:95%;
     width: 100px;
     position: absolute;
     z-index: -1;
-    top: 5%;
-    right: 20%;
+    top: 2%;
+    right: 18%;
     border-radius:50px;
     border: 4px solid var(--black);
     transform: rotate(12deg);
+    animation-name: guardaContorno;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
 }
 .contorno{
     position: absolute;
@@ -71,22 +69,86 @@ body{
     border: 5px solid var(--black);
     position: relative;
 }
-.tela{
-    width: 65%;
+.tv{
+    width:400px;
+    height: 250px;
+    background-color: var(--grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation-name: diminui;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    border-top:4px solid var(--black);
+    border-bottom:4px solid var(--black);
+    
+
+
+}
+.telaInterna{
+    width:95%;
     height: 90%;
     background-color: var(--black);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
+    position: relative;
+    animation: some 1s ;
+    animation-fill-mode: forwards;
 
 }
-.textoTela{
+
+.vidro{
     width:80% ;
     height: 80%;
     background-color: white;
-   
+    text-align: center;
 }
+
+
+/* somnbras
+.telaInterna::after, .telaInterna::before, .telaInterna .vidro,.telaInterna .vidro::after{
+    content: "";
+    width: 200%;
+    height: 100%;
+    position: absolute;
+    transform: rotate(45deg);
+}
+.telaInterna .vidro, .telaInterna .vidro::after{
+    transform: rotate(-30deg);
+    background-color:  rgba(255,255,255,.12);
+    top: -100px;
+    z-index: 99;
+}
+
+.telaInterna .vidro::after{
+    transform: rotate(-12deg);
+}
+.vidro::before{
+    background-color: var(--blue);
+    top: 0;
+    left: 0;
+}
+.vidro::after{
+    background-color:#ffefcc;
+    top: -20%;
+    left: -130%;
+}
+.retangulo::after{
+    content: "";
+    width: 600px;
+    height: 30px;
+    position: absolute;
+    background-color:var(--transp-black);
+    border-radius: 50%;
+    bottom: 350px;
+}
+
+*/
+
+
+
 .analogic{
     width: 50px;
     height: 50px;
@@ -158,14 +220,15 @@ button::after{
 }
 
 .controls button:nth-child(3){
-    transform:rotate(90deg);
-    top: 24%;
-    right: 8%;
+    transform:rotate(270deg);
+    bottom: 10%;
+    left: 5%;
 }
 .controls button:nth-child(4){
-    transform:rotate(270deg);
+    transform:rotate(90deg);
+
     bottom:10%;
-    left: 6%;
+    left: 25%;
 }
 .quadradro{
     width: 15px;
@@ -189,6 +252,7 @@ button::after{
     right: -30%;
     transform: rotate(-10deg);
     top: 4%;
+  
     
 }
 .red .contorno{
@@ -203,4 +267,41 @@ button::after{
 .red >.quadradro{
     border-radius: 50%;
     margin-left:10% ;
+}
+
+
+@keyframes diminui {
+    0%{
+        width: 400px;
+
+    }
+    100%{
+        width: 150px;
+    }
+}
+@keyframes guardaContorno{
+ 
+    50%{
+        transform: rotateY(-60deg);
+    }
+    100%{
+        transform: rotateY(-60deg);
+        visibility:0 ;
+    }
+}
+
+@keyframes some{
+    0%{
+        width:95%;
+    }
+    50%{
+        width: 90%;
+    }
+    70%{
+        width: 90%;
+    }
+    100%{
+        width: 90%;
+        visibility: hidden;
+    }
 }
